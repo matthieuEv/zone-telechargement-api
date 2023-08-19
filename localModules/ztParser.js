@@ -2,7 +2,7 @@
  * @name ztParser
  * @author matthieuEv, Sylicium
  * @date 19/08/2023
- * @version 1.9.0
+ * @version 1.9.1
  * @github https://github.com/matthieuEv/zone-telechargement-api
  */
 
@@ -12,7 +12,8 @@ const cheerio = require("cheerio");
 class ZoneTelechargementParser {
     constructor(devMode=false, axiosRequestTimeInBetween=300, moviesDbToken="") {
         this._ZTBaseURL = `https://www.zone-telechargement.homes` 
-        this._allCategories = [ "films", "series", "jeux", "musiques", "mangas", "ebooks", "autres-videos", "logiciels", "mobiles" ]
+        this._allCategories = [ "films" ]
+        // this._allCategories = [ "films", "series", "jeux", "musiques", "mangas", "ebooks", "autres-videos", "logiciels", "mobiles" ]
         this._lastAxiosRequestTimestamp = 0 // Do not edit this value. used as temp
         this._axiosRequestTimeInBetween = axiosRequestTimeInBetween // Default: 300 - In milliseconds. Minimum time to wait between each requests to the base URL. Low values can cause functions to crash due to HTPP error 520 from axios. (Or rate limit errors)
         this._devMode = devMode;
