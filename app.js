@@ -4,16 +4,15 @@ require('dotenv').config();
 
 ZTP._devMode = true // Enable dev mode (more logs)
 ZTP.setMoviesDbToken(process.env.MOVIESDB_API_KEY);
-console.log("ZTP.moviesDbToken", ZTP.moviesDbToken);
 
-let category = "films" // The category you want to search / list of categories at ZTP._allCategories
+let category = "series" // The category you want to search / list of categories at ZTP._allCategories
 // Currently, only "films" is tested, so it may crash or not work properly for other categories
-let query = "Iron man" // Your search query
+let query = "Mercredi" // Your search query
 
 async function __main__() {
     let response1 = await ZTP.search(category, query)
 
-    console.log("Search: ", Object.values(response1)[0][0],"\n")
+    console.log("Search: ", response1,"\n")
     // console.log("SearchAll: ", await ZTP.searchAll(category, query),"\n")
     console.log("\n\getMovieDatas: ", await ZTP.getMovieDatas(category, Object.values(response1)[0][0].id),"\n")
 }
