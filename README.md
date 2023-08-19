@@ -84,54 +84,54 @@ Should output:
 Search:  {
   Interstellar: [
     {
-      url: 'https://www.zone-telechargement.homes/?p=film&id=634-interstellar',
+      url: <url>,
       id: '634',
-      image: 'https://www.zone-telechargement.homes//img/films/cc296064e5ea1bdb9820af3b95ad733a.webp',
+      image: <image_url>,
       quality: 'Blu-Ray 1080p',
       language: '(TRUEFRENCH)',
       publishedOn: 2017-02-11T23:00:00.000Z,
       publishedTimestamp: 1486854000000
     },
     {
-      url: 'https://www.zone-telechargement.homes/?p=film&id=2189-interstellar',
+      url: <url>,
       id: '2189',
-      image: 'https://www.zone-telechargement.homes//img/films/531de313552e59574fc9f0a8f34473aa.webp',
+      image: <image_url>,
       quality: 'DVDRIP',
       language: '(FRENCH)',
       publishedOn: 2017-09-22T22:00:00.000Z,
       publishedTimestamp: 1506117600000
     },
     {
-      url: 'https://www.zone-telechargement.homes/?p=film&id=5895-interstellar',
+      url: <url>,
       id: '5895',
-      image: 'https://www.zone-telechargement.homes//img/films/69e51be46fe03326329e09418daaca35.webp',
+      image: <image_url>,
       quality: 'BDRIP',
       language: '(VOSTFR)',
       publishedOn: 2018-09-30T22:00:00.000Z,
       publishedTimestamp: 1538344800000
     },
     {
-      url: 'https://www.zone-telechargement.homes/?p=film&id=9036-interstellar',
+      url: <url>,
       id: '9036',
-      image: 'https://www.zone-telechargement.homes//img/films/9585faeceac44e3a7624d98c268edcc5.webp',
+      image: <image_url>,
       quality: 'BLURAY REMUX 4K',
       language: '(MULTI (TRUEFRENCH))',
       publishedOn: 2019-03-20T23:00:00.000Z,
       publishedTimestamp: 1553122800000
     },
     {
-      url: 'https://www.zone-telechargement.homes/?p=film&id=30038-interstellar',
+      url: <url>,
       id: '30038',
-      image: 'https://www.zone-telechargement.homes//img/films/d98b403a9f0d4508126031705d290c95.webp',
+      image: <image_url>,
       quality: '4K LIGHT',
       language: '(MULTI (FRENCH))',
       publishedOn: 2022-02-03T23:00:00.000Z,
       publishedTimestamp: 1643929200000
     },
     {
-      url: 'https://www.zone-telechargement.homes/?p=film&id=33818-interstellar',
+      url: <url>,
       id: '33818',
-      image: 'https://www.zone-telechargement.homes//img/films/e835bc140cbf4310865af5653df7da30.webp',
+      image: <image_url>,
       quality: 'HDLIGHT 1080p',
       language: '(MULTI (TRUEFRENCH))',
       publishedOn: 2022-08-30T22:00:00.000Z,
