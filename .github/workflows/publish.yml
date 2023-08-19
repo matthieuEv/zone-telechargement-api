@@ -14,23 +14,25 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: 18
+
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
         run: npm install
+
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
-
-# Patch (correctif) : Utilisez le type de changement fix pour les correctifs de bugs qui ne cassent pas les fonctionnalités existantes.
-#     fix: resolved a bug that caused issues in the API response
-
-# Mineure : Utilisez le type de changement feat pour l'ajout de nouvelles fonctionnalités ou améliorations significatives qui ne rompent pas la compatibilité avec les versions antérieures.
-#     feat: added new feature X
-
-# Majeure : Utilisez le type de changement BREAKING CHANGE pour les modifications qui rompent la compatibilité avec les versions antérieures. Assurez-vous d'ajouter une description détaillée des ruptures dans le message de commit.
-#     BREAKING CHANGE: updated the API response structure
