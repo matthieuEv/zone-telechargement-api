@@ -51,9 +51,8 @@ class ZoneTelechargementParser {
         return this._getBaseURL() + `/?p=${category}&search=${encodeURI(query)}&page=${page}`
     }
 
-    sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
     async _getDOMElementFromURL(url) {
+        const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
         if (Date.now() - this._lastAxiosRequestTimestamp < this._axiosRequestTimeInBetween) {
             await sleep(this._axiosRequestTimeInBetween - (Date.now() - this._lastAxiosRequestTimestamp));
         }
@@ -164,6 +163,20 @@ class ZoneTelechargementParser {
         return true
     }
 
+    async search(category, query, page) {
+        try {
+            let responseMovieList = await this._parseMoviesFromSearchQuery(category, query, page)
+            return responseMovieList
+        } catch(e) {
+            if(this._devMode) console.log(e)
+            return {
+                status: false,
+                error: `${e}`,
+                stack: e.stack.split("\n"),
+            }
+        }
+    }
+
     async searchAll(category, query) {
         try {
             let responseMovieList = {};
@@ -190,22 +203,6 @@ class ZoneTelechargementParser {
             };
         }
     }
-    
-
-    async search(category, query, page) {
-        try {
-            let responseMovieList = await this._parseMoviesFromSearchQuery(category, query, page)
-            return responseMovieList
-        } catch(e) {
-            if(this._devMode) console.log(e)
-            return {
-                status: false,
-                error: `${e}`,
-                stack: e.stack.split("\n"),
-            }
-        }
-    }
-
 
 
     async getMovieDatas(categories, id) {
