@@ -1,16 +1,14 @@
 /**
  * @name ztParser
- * @author Sylicium
- * @date 09/08/2023
- * @version 1.8.0
- * @github https://github.com/Sylicium/zone-telechargement-api/
+ * @author matthieuEv, Sylicium
+ * @date 19/08/2023
+ * @version 1.9.0
+ * @github https://github.com/matthieuEv/zone-telechargement-api
  */
 
 const axios = require("axios")
 const cheerio = require("cheerio");
 require('dotenv').config();
-
-var somef = require('./someFunctions');
 
 class ZoneTelechargementParser {
     constructor(devMode=false, axiosRequestTimeInBetween=300) {
@@ -53,9 +51,11 @@ class ZoneTelechargementParser {
         return this._getBaseURL() + `/?p=${category}&search=${encodeURI(query)}&page=${page}`
     }
 
+    sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
     async _getDOMElementFromURL(url) {
         if (Date.now() - this._lastAxiosRequestTimestamp < this._axiosRequestTimeInBetween) {
-            await somef.sleep(this._axiosRequestTimeInBetween - (Date.now() - this._lastAxiosRequestTimestamp));
+            await sleep(this._axiosRequestTimeInBetween - (Date.now() - this._lastAxiosRequestTimestamp));
         }
         this._lastAxiosRequestTimestamp = Date.now();
 

@@ -1,4 +1,5 @@
 const ZTP = require("./localModules/ztParser") // Import ztParser
+const ZTP = require("ztParser")
 ZTP.useBaseURL("https://www.zone-telechargement.homes/") // Do not add the last slash !
 
 ZTP._devMode = true // Enable dev mode (more logs)
