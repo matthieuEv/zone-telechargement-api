@@ -1,8 +1,10 @@
 const ZTP = require("./localModules/ztParser") // Import ztParser
-const ZTP = require("ztParser")
 ZTP.useBaseURL("https://www.zone-telechargement.homes/") // Do not add the last slash !
+require('dotenv').config();
 
 ZTP._devMode = true // Enable dev mode (more logs)
+ZTP.setMoviesDbToken(process.env.MOVIESDB_API_KEY);
+console.log("ZTP.moviesDbToken", ZTP.moviesDbToken);
 
 let category = "films" // The category you want to search / list of categories at ZTP._allCategories
 // Currently, only "films" is tested, so it may crash or not work properly for other categories

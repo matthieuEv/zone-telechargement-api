@@ -36,3 +36,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
+
+# Patch (correctif) : Utilisez le type de changement **fix** pour les correctifs de bugs qui ne cassent pas les fonctionnalités existantes.
+#     fix: resolved a bug that caused issues in the API response
+
+# Mineure : Utilisez le type de changement **feat** pour l'ajout de nouvelles fonctionnalités ou améliorations significatives qui ne rompent pas la compatibilité avec les versions antérieures.
+#     feat: added new feature X
+
+# Majeure : Utilisez le type de changement **BREAKING CHANGE** pour les modifications qui rompent la compatibilité avec les versions antérieures. Assurez-vous d'ajouter une description détaillée des ruptures dans le message de commit.
+#     BREAKING CHANGE: updated the API response structure
