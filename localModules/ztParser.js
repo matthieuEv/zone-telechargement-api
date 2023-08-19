@@ -8,19 +8,18 @@
 
 const axios = require("axios")
 const cheerio = require("cheerio");
-require('dotenv').config();
 
 class ZoneTelechargementParser {
-    constructor(devMode=false, axiosRequestTimeInBetween=300) {
+    constructor(devMode=false, axiosRequestTimeInBetween=300, moviesDbToken="") {
         this._ZTBaseURL = `https://www.zone-telechargement.homes` 
         this._allCategories = [ "films", "series", "jeux", "musiques", "mangas", "ebooks", "autres-videos", "logiciels", "mobiles" ]
         this._lastAxiosRequestTimestamp = 0 // Do not edit this value. used as temp
         this._axiosRequestTimeInBetween = axiosRequestTimeInBetween // Default: 300 - In milliseconds. Minimum time to wait between each requests to the base URL. Low values can cause functions to crash due to HTPP error 520 from axios. (Or rate limit errors)
         this._devMode = devMode;
         this._devMode && console.log("ztParser: Dev mode enabled.")
-        this._moviesDbKey = process.env.MOVIESDB_API_KEY;
+        this._moviesDbKey = moviesDbToken;
     }
-    
+
     _getBaseURL() { return this._ZTBaseURL }
     _getAllCategories() { return this._allCategories }
     _getMatchingGroups = function(s) {
@@ -156,6 +155,8 @@ class ZoneTelechargementParser {
             return false;
         }
     }
+
+    setMoviesDbToken(value) { this._moviesDbKey = value }
 
     useBaseURL(url) {
         this._ZTBaseURL = url
