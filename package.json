@@ -1,5 +1,5 @@
 {
-  "name": "Zt Film API",
+  "name": "zt-film-api",
   "version": "1.0.0",
   "description": "An API for zone-telechargement built from Scratch, Only for films",
   "main": "localModules/ztParser.js",
