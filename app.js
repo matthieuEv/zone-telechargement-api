@@ -1,5 +1,5 @@
 const ZTP = require("./localModules/ztParser") // Import ztParser
-ZTP.useBaseURL("https://www.zone-telechargement.homes/") // Do not add the last slash !
+ZTP.useBaseURL("https://www.zone-telechargement.homes") // Do not add the last slash !
 require('dotenv').config();
 
 ZTP._devMode = true // Enable dev mode (more logs)
