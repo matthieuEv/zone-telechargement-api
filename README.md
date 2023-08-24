@@ -81,64 +81,40 @@ __main__()
 ```
 Should output:
 ```bash
-Search:  {
-  Interstellar: [
-    {
-      url: <url>,
-      id: '634',
-      image: <image_url>,
-      quality: 'Blu-Ray 1080p',
-      language: '(TRUEFRENCH)',
-      publishedOn: 2017-02-11T23:00:00.000Z,
-      publishedTimestamp: 1486854000000
-    },
-    {
-      url: <url>,
-      id: '2189',
-      image: <image_url>,
-      quality: 'DVDRIP',
-      language: '(FRENCH)',
-      publishedOn: 2017-09-22T22:00:00.000Z,
-      publishedTimestamp: 1506117600000
-    },
-    {
-      url: <url>,
-      id: '5895',
-      image: <image_url>,
-      quality: 'BDRIP',
-      language: '(VOSTFR)',
-      publishedOn: 2018-09-30T22:00:00.000Z,
-      publishedTimestamp: 1538344800000
-    },
-    {
-      url: <url>,
-      id: '9036',
-      image: <image_url>,
-      quality: 'BLURAY REMUX 4K',
-      language: '(MULTI (TRUEFRENCH))',
-      publishedOn: 2019-03-20T23:00:00.000Z,
-      publishedTimestamp: 1553122800000
-    },
-    {
-      url: <url>,
-      id: '30038',
-      image: <image_url>,
-      quality: '4K LIGHT',
-      language: '(MULTI (FRENCH))',
-      publishedOn: 2022-02-03T23:00:00.000Z,
-      publishedTimestamp: 1643929200000
-    },
-    {
-      url: <url>,
-      id: '33818',
-      image: <image_url>,
-      quality: 'HDLIGHT 1080p',
-      language: '(MULTI (TRUEFRENCH))',
-      publishedOn: 2022-08-30T22:00:00.000Z,
-      publishedTimestamp: 1661896800000
-    }
-  ]
-} 
+Search:  [
+  {
+    title: 'Interstellar',
+    url: '<url>',
+    id: '634',
+    image: '<image_url>',
+    quality: 'Blu-Ray 1080p',
+    language: '(TRUEFRENCH)',
+    publishedOn: 2017-02-11T23:00:00.000Z,
+    publishedTimestamp: 1486854000000
+  },
+  {
+    title: 'Interstellar',
+    url: '<url>',
+    id: '2189',
+    image: '<image',
+    quality: 'DVDRIP',
+    language: '(FRENCH)',
+    publishedOn: 2017-09-22T22:00:00.000Z,
+    publishedTimestamp: 1506117600000
+  },
+  {
+    title: 'Interstellar',
+    url: '<url>',
+    id: '5895',
+    image: '<image',
+    quality: 'BDRIP',
+    language: '(VOSTFR)',
+    publishedOn: 2018-09-30T22:00:00.000Z,
+    publishedTimestamp: 1538344800000
+  }
+
+  ...
+]
 ```
 
 ### Methods
@@ -231,9 +207,11 @@ Data returned:
 ```
 Example:
 ```js
-    let response1 = await ZT.searchAll(category, query)
-    console.log("Search: ", response1,"\n")
-    console.log("\n\getMovieDatas: ", await ZT.getMovieDatas(category, Object.values(response1)[0][0].id),"\n")
+//Get the datas of the first film of the search
+
+let response1 = await ZT.searchAll(category, query)
+console.log("Search: ", response1,"\n")
+console.log("\n\getMovieDatas: ", await ZT.getMovieDatas(category, category, response1[0].id),"\n")
 ```
 
 ### License
