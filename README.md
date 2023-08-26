@@ -15,7 +15,7 @@ This API is only for educational purposes. I am not responsible for any misuse o
       - [useBaseURL(value)](#usebaseurlvalue)
       - [search(category, query, page)](#searchcategory-query-page)
       - [searchAll(category, query)](#searchallcategory-query)
-      - [getMovieDatas(categories, id)](#getmoviedatascategories-id)
+      - [getQueryDatas(categories, id)](#getQueryDatascategories-id)
     - [License](#license)
     - [Author](#author)
     - [Thanks](#thanks)
@@ -179,9 +179,9 @@ Data returned:
 }
 ```
 
-#### getMovieDatas(categories, id)
+#### getQueryDatas(categories, id)
 ```js
-let response = await ZT.getMovieDatas(categories, id);
+let response = await ZT.getQueryDatas(categories, id);
 ```
 Gets the datas of a film.
 `categories` is the category of the film. Currently, only `films` is supported.
@@ -211,7 +211,7 @@ Example:
 
 let response1 = await ZT.searchAll(category, query)
 console.log("Search: ", response1,"\n")
-console.log("\n\getMovieDatas: ", await ZT.getMovieDatas(category, category, response1[0].id),"\n")
+console.log("\n\getQueryDatas: ", await ZT.getQueryDatas(category, category, response1[0].id),"\n")
 ```
 
 ### License
