@@ -39,6 +39,8 @@ MOVIESDB_API_KEY=<your_api_key>
 ```
 You can get your API key from [here](https://www.themoviedb.org/settings/api).
 
+
+
 ```js
 zt.useBaseURL("<the url>");
 ```
@@ -46,7 +48,7 @@ You can add the url manually, or you can use [this repo](https://github.com/matt
 
 ```js
 let category = "" // The category you want to search
-// Currently, only "films" is supported
+// "films" or "series"
 let query = "" // The film you want to search
 
 async function __main__() {
@@ -68,7 +70,9 @@ ZT.useBaseURL("<the url>");
 
 
 let category = "films" // The category you want to search
-// Currently, only "films" is supported
+
+//"films" or "series"
+
 let query = "Interstellar" // Your search query
 
 async function __main__() {
