@@ -201,21 +201,21 @@ class ZoneTelechargementParser {
         postinfo.find("b > div").each((index, element) => {
           const hostName = $(element).text();
           if (hostName) {
-            downloadLinks[hostName] = {};
-            $(element)
-              .parent()
-              .nextAll("b")
-              .each((index, element) => {
-                const episode = $(element).find("a").text();
-                if (episode) {
-                  const downloadUrl = $(element).find("a").attr("href");
-                  downloadLinks[hostName][episode] = downloadUrl;
-                } else {
-                  return false;
+            $(element).parent().nextAll("b").each((index, element) => {
+              const episode = $(element).find("a").text();
+              if (episode) {
+                if (!downloadLinks[episode]) {
+                  downloadLinks[episode] = {};
                 }
-              });
+                const downloadUrl = $(element).find("a").attr("href");
+                downloadLinks[episode][hostName] = downloadUrl;
+              } else {
+                return false;
+              }
+            });
           }
         });
+        
 
         let datas = {
           name: name,

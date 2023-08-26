@@ -1,10 +1,13 @@
 # zone-telechargement-api
+
 An API for zone-telechargement built from Scratch.
 
 ## ⚠️ Disclaimer
+
 This API is only for educational purposes. I am not responsible for any misuse of this API. Use it at your own risk.
 
 ## Table of contents
+
 - [zone-telechargement-api](#zone-telechargement-api)
   - [Table of contents](#table-of-contents)
   - [Documentation](#documentation)
@@ -21,69 +24,75 @@ This API is only for educational purposes. I am not responsible for any misuse o
     - [Thanks](#thanks)
 
 ## Documentation
+
 ### Installation
+
 ```bash
 npm i zt-film-api
 ```
 
 ### Usage
+
 ```js
-const zt = require('zt-film-api');
-require('dotenv').config();
+const zt = require("zt-film-api");
+require("dotenv").config();
 zt.setMoviesDbToken(process.env.MOVIESDB_API_KEY);
 ```
 
 You must have a `.env` file in the root directory of your project with the following content:
+
 ```env
 MOVIESDB_API_KEY=<your_api_key>
 ```
+
 You can get your API key from [here](https://www.themoviedb.org/settings/api).
-
-
 
 ```js
 zt.useBaseURL("<the url>");
 ```
+
 You can add the url manually, or you can use [this repo](https://github.com/matthieuEv/Zt-url-api) to get the current url.
 
 ```js
-let category = "" // The category you want to search
+let category = ""; // The category you want to search
 // "films" or "series"
-let query = "" // The film you want to search
+let query = ""; // The film you want to search
 
 async function __main__() {
-    let response1 = await zt.search(category, query)
+  let response1 = await zt.search(category, query);
 
-    console.log("Search: ", response1,"\n")
+  console.log("Search: ", response1, "\n");
 }
 
-__main__()
+__main__();
 ```
 
 Here are a full examples:
+
 ```js
-const ZT = require('zt-film-api');
-require('dotenv').config();
+const ZT = require("zt-film-api");
+require("dotenv").config();
 ZT.setMoviesDbToken(process.env.MOVIESDB_API_KEY);
 
 ZT.useBaseURL("<the url>");
 
-
-let category = "films" // The category you want to search
+let category = "films"; // The category you want to search
 
 //"films" or "series"
 
-let query = "Interstellar" // Your search query
+let query = "Interstellar"; // Your search query
 
 async function __main__() {
-    let response1 = await ZT.search(category, query)
+  let response1 = await ZT.search(category, query);
 
-    console.log("Search: ", response1,"\n")
+  console.log("Search: ", response1, "\n");
 }
 
-__main__()
+__main__();
 ```
+
 Should output:
+
 ```bash
 Search:  [
   {
@@ -122,27 +131,35 @@ Search:  [
 ```
 
 ### Methods
+
 #### setMoviesDbToken(value)
+
 ```js
 ZT.setMoviesDbToken("your_api_key");
 ```
+
 Sets the API key for [The Movies Database](https://www.themoviedb.org/).
 
 #### useBaseURL(value)
+
 ```js
 ZT.useBaseURL("<the url>");
 ```
+
 Sets the base url for the API. You can use [this repo](https://github.com/matthieuEv/Zt-url-api) to get the current url.
 
 #### search(category, query, page)
+
 ```js
 let response = await ZT.search(category, query, 1);
 ```
+
 Searches for a film
 `category` is the category you want to search. Currently, only `films` is supported.
 `query` is the film you want to search.
 `page` is optional, and defaults to `1`.
 Data returned:
+
 ```js
 {
     <film_name>: [
@@ -160,13 +177,16 @@ Data returned:
 ```
 
 #### searchAll(category, query)
+
 ```js
 let response = await ZT.searchAll(category, query);
 ```
+
 Searches for a film in all pages.
 `category` is the category you want to search. Currently, only `films` is supported.
 `query` is the film you want to search.
 Data returned:
+
 ```js
 {
     <film_name>: [
@@ -184,13 +204,19 @@ Data returned:
 ```
 
 #### getQueryDatas(categories, id)
+
 ```js
 let response = await ZT.getQueryDatas(categories, id);
 ```
+
 Gets the datas of a film.
 `categories` is the category of the film. Currently, only `films` is supported.
 `id` is the id of the film.
+
+##### If query is a film
+
 Data returned:
+
 ```js
 {
     title: <title>,
@@ -209,22 +235,64 @@ Data returned:
     }
 }
 ```
-Example:
-```js
-//Get the datas of the first film of the search
 
-let response1 = await ZT.searchAll(category, query)
-console.log("Search: ", response1,"\n")
-console.log("\n\getQueryDatas: ", await ZT.getQueryDatas(category, category, response1[0].id),"\n")
+##### If query is a serie
+
+```js
+{
+  ...
+  downloadLink: {
+    'Episode 1': {
+      <download_website>: <link>,
+    },
+    'Episode 2': {
+      <download_website>: <link>,
+    },
+    'Episode 3': {
+      <download_website>: <link>,
+    },
+    ...
+  }
+}
+```
+
+Example:
+
+```js
+//Get the datas from the first query of the search
+
+let response1 = await ZT.searchAll(category, query);
+console.log("Search: ", response1, "\n");
+console.log(
+  "\ngetQueryDatas: ",
+  await ZT.getQueryDatas(category, category, response1[0].id),
+  "\n"
+);
 ```
 
 ### License
+
 [MIT](https://github.com/matthieuEv/zone-telechargement-api/blob/main/LICENSE)
 
 ### Author
-[MatthieuEv](https://github.com/matthieuEv)
 
-[Sylicium](https://github.com/Sylicium)
+<p>
+  <a href="https://github.com/matthieuEv">
+    <img src="https://github.com/matthieuEv.png" width="50" height="50" align="left" style="margin-right: 20px;" />
+    <span style="font-size: 20px; vertical-align: middle;">MatthieuEv</span>
+  </a>
+</p>
+<br clear="left" />
+
+<p>
+  <a href="https://github.com/Sylicium">
+    <img src="https://github.com/Sylicium.png" width="50" height="50" align="left" style="margin-right: 20px;" />
+    <span style="font-size: 20px; vertical-align: middle;">Sylicium</span>
+  </a>
+</p>
+<br clear="left" />
+
 
 ### Thanks
+
 I would like to thank [Sylicium](https://github.com/Sylicium) for making the core of this API. I just added some features and made it a npm package. Go check his [repo](https://github.com/Sylicium/zone-telechargement-api) out!

@@ -14,7 +14,7 @@ async function __main__() {
 
     console.log("Search: ", response1,"\n")
     // console.log("SearchAll: ", await ZTP.searchAll(category, query),"\n")
-    console.log("\n\getMovieDatas: ", await ZTP.getMovieDatas(category, response1[0].id),"\n")
+    console.log("\n\getMovieDatas: ", await ZTP.getQueryDatas(category, response1[0].id),"\n")
 }
 
 __main__()
