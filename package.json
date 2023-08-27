@@ -1,7 +1,7 @@
 {
   "name": "zt-film-api",
   "description": "An API for zone-telechargement built from Scratch, Only for films",
-  "main": "localModules/ztParser.js",
+  "main": "ztParser.js",
   "scripts": {
     "dev": "node app.js",
     "test": "jest --testPathPattern=tests --verbose"
