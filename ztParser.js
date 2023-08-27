@@ -191,6 +191,14 @@ class ZoneTelechargementParser {
             downloadLinks[hostName] = downloadUrl;
           }
         });
+        return {
+          name: name,
+          originalName: originalName,
+          language: language,
+          quality: quality,
+          size: size,
+          links: downloadLinks,
+        };
       } else if (categories == "serie") {
         const sizeMatch = htmlString.match(
           /<strong><u>Taille d'un episode<\/u> :<\/strong>\s*([^<]+)<br>/
@@ -201,23 +209,24 @@ class ZoneTelechargementParser {
         postinfo.find("b > div").each((index, element) => {
           const hostName = $(element).text();
           if (hostName) {
-            $(element).parent().nextAll("b").each((index, element) => {
-              const episode = $(element).find("a").text();
-              if (episode) {
-                if (!downloadLinks[episode]) {
-                  downloadLinks[episode] = {};
+            $(element)
+              .parent()
+              .nextAll("b")
+              .each((index, element) => {
+                const episode = $(element).find("a").text();
+                if (episode) {
+                  if (!downloadLinks[episode]) {
+                    downloadLinks[episode] = {};
+                  }
+                  const downloadUrl = $(element).find("a").attr("href");
+                  downloadLinks[episode][hostName] = downloadUrl;
+                } else {
+                  return false;
                 }
-                const downloadUrl = $(element).find("a").attr("href");
-                downloadLinks[episode][hostName] = downloadUrl;
-              } else {
-                return false;
-              }
-            });
+              });
           }
         });
-        
-
-        let datas = {
+        return {
           name: name,
           originalName: originalName,
           language: language,
@@ -225,7 +234,6 @@ class ZoneTelechargementParser {
           size: size,
           links: downloadLinks,
         };
-        return datas;
       }
     } catch (error) {
       this._devMode && console.log("Erreur:", error);
@@ -417,7 +425,7 @@ class ZoneTelechargementParser {
         language: ztData.language,
         quality: ztData.quality,
         size: ztData.size,
-        description: showDetails.summary,
+        description: showDetails.summary.replace(/<p>/g, '').replace(/<\/p>/g, ''),
         poster: showDetails.image.original,
         release_date: showDetails.premiered,
         genres: showDetails.genres,
