@@ -15,7 +15,7 @@ class ZoneTelechargementParser {
     axiosRequestTimeInBetween = 300,
     moviesDbToken = ""
   ) {
-    this._ZTBaseURL = `https://www.zone-telechargement.homes`;
+    this._ZTBaseURL = '';
     this._allCategories = ["films", "series"];
     // this._allCategories = [ "films", "series", "jeux", "musiques", "mangas", "ebooks", "autres-videos", "logiciels", "mobiles" ]
     this._lastAxiosRequestTimestamp = 0; // Do not edit this value. used as temp
@@ -148,7 +148,8 @@ class ZoneTelechargementParser {
     if (categories == "films") categories = "film";
     else if (categories == "series") categories = "serie";
     try {
-      const url = `https://www.zone-telechargement.homes/?p=${categories}&id=${id}`;
+      console.log("categories:", categories, "id:", id)
+      const url = this._ZTBaseURL+`/?p=${categories}&id=${id}`;
 
       const $ = await this._getDOMElementFromURL(url);
       const mainHtml = $("#dle-content");

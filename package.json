@@ -16,8 +16,7 @@
     "LICENSE",
     "README.md",
     "package.json",
-    "ztParser.js",
-    ".gitignore"
+    "ztParser.js"
   ],
   "repository": {
     "type": "git",
